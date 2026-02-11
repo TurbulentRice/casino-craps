@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
 
   // Text styles
   text: {
-    fontWeight: Theme.typography.weights.semibold,
-    textAlign: 'center',
+    fontWeight: Theme.typography.weights.semibold as any,
+    textAlign: 'center' as any,
   },
   text_primary: {
     color: Colors.light.background,

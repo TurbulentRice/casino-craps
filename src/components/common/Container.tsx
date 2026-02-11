@@ -4,6 +4,7 @@
 
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, ViewStyle, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '../../constants/colors';
 import { Theme } from '../../constants/theme';
 
@@ -26,27 +27,36 @@ export default function Container({
 }: ContainerProps) {
   const containerStyle = [
     styles.base,
+    { backgroundColor },
+    style,
+  ];
+
+  const contentStyle = [
     {
       padding: Theme.spacing[padding],
-      backgroundColor,
     },
     center && styles.center,
-    style,
   ];
 
   if (scrollable) {
     return (
-      <ScrollView
-        style={containerStyle}
-        contentContainerStyle={center && styles.center}
-        showsVerticalScrollIndicator={false}
-      >
-        {children}
-      </ScrollView>
+      <SafeAreaView style={containerStyle} edges={['top']}>
+        <ScrollView
+          style={styles.base}
+          contentContainerStyle={contentStyle}
+          showsVerticalScrollIndicator={false}
+        >
+          {children}
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 
-  return <View style={containerStyle}>{children}</View>;
+  return (
+    <SafeAreaView style={containerStyle} edges={['top']}>
+      <View style={contentStyle}>{children}</View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -135,7 +135,7 @@ function BetItem({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: Theme.spacing.xl,
+    paddingVertical: Theme.spacing.md,
   },
   subtitle: {
     marginTop: Theme.spacing.sm,

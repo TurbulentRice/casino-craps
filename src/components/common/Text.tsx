@@ -149,34 +149,37 @@ export function Monospace({
 
 const styles = StyleSheet.create({
   heading: {
-    fontWeight: Theme.typography.weights.bold,
-    lineHeight: Theme.typography.lineHeights.tight,
+    fontWeight: Theme.typography.weights.bold as any,
   },
   heading1: {
     fontSize: Theme.typography.sizes.huge,
+    lineHeight: Theme.typography.sizes.huge * 1.2,
   },
   heading2: {
     fontSize: Theme.typography.sizes.xxxl,
+    lineHeight: Theme.typography.sizes.xxxl * 1.2,
   },
   heading3: {
     fontSize: Theme.typography.sizes.xxl,
+    lineHeight: Theme.typography.sizes.xxl * 1.2,
   },
   heading4: {
     fontSize: Theme.typography.sizes.xl,
+    lineHeight: Theme.typography.sizes.xl * 1.2,
   },
 
   body: {
-    lineHeight: Theme.typography.lineHeights.normal,
+    lineHeight: Theme.typography.sizes.md * 1.5,
   },
 
   caption: {
     fontSize: Theme.typography.sizes.xs,
-    lineHeight: Theme.typography.lineHeights.normal,
+    lineHeight: Theme.typography.sizes.xs * 1.5,
   },
 
   label: {
     fontSize: Theme.typography.sizes.sm,
-    textTransform: 'uppercase',
+    textTransform: 'uppercase' as any,
     letterSpacing: 0.5,
   },
 

@@ -9,6 +9,7 @@ import { Theme } from '../constants/theme';
 import { useGame } from '../context/GameContext';
 import InteractiveCrapsTable from '../components/table/InteractiveCrapsTable';
 import GameControls from '../components/table/GameControls';
+import { Container } from '../components/common';
 
 export default function PracticeScreen() {
   const { state, actions } = useGame();
@@ -30,19 +31,21 @@ export default function PracticeScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Game Controls */}
-        <GameControls onRoll={handleRoll} onClearBets={handleClearBets} />
+    <Container scrollable padding="lg" backgroundColor={Colors.dark.background}>
+      <View style={styles.container}>
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Game Controls */}
+          <GameControls onRoll={handleRoll} onClearBets={handleClearBets} />
 
-        {/* Craps Table */}
-        <InteractiveCrapsTable />
-      </ScrollView>
-    </View>
+          {/* Craps Table */}
+          <InteractiveCrapsTable />
+        </ScrollView>
+      </View>
+    </Container>
   );
 }
 
@@ -56,6 +59,5 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: Theme.spacing.md,
-    paddingBottom: Theme.spacing.xxxl,
   },
 });

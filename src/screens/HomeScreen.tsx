@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { HomeScreenNavigationProp } from '../navigation/types';
 import { Container, Button, Card, Heading, Body, Caption } from '../components/common';
@@ -18,11 +18,11 @@ export default function HomeScreen() {
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <View style={styles.diceIcon}>
-            <Heading level={1} color={Colors.light.background} style={styles.diceEmoji}>
-              🎲
-            </Heading>
-          </View>
+          <Image
+            source={require('../../assets/icon.png')}
+            style={styles.appIcon}
+            resizeMode="contain"
+          />
           <Heading level={1} color={Colors.light.background} align="center">
             Casino Craps
           </Heading>
@@ -127,7 +127,7 @@ function FeatureCard({ icon, title, description, onPress }: FeatureCardProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: Theme.spacing.xl,
+    paddingVertical: Theme.spacing.md,
   },
 
   // Header
@@ -135,18 +135,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: Theme.spacing.xl,
   },
-  diceIcon: {
-    width: 80,
-    height: 80,
-    borderRadius: Theme.borderRadius.full,
-    backgroundColor: Colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
+  appIcon: {
+    width: 100,
+    height: 100,
     marginBottom: Theme.spacing.md,
-    ...Theme.shadows.lg,
-  },
-  diceEmoji: {
-    fontSize: 48,
   },
   subtitle: {
     marginTop: Theme.spacing.sm,

@@ -33,13 +33,16 @@ function MainTabNavigator() {
           backgroundColor: '#1A1A1A',
           borderTopColor: '#333',
           borderTopWidth: 1,
-          paddingBottom: 5,
-          paddingTop: 5,
-          height: 60,
+          paddingTop: 8,
+          height: 80,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: '600',
+          marginTop: 2,
+        },
+        tabBarItemStyle: {
+          paddingVertical: 4,
         },
       }}
     >
