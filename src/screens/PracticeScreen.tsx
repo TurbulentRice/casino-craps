@@ -31,33 +31,28 @@ export default function PracticeScreen() {
   };
 
   return (
-    <Container scrollable padding="lg" backgroundColor={Colors.dark.background}>
-      <View style={styles.container}>
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-        >
-          {/* Game Controls */}
-          <GameControls onRoll={handleRoll} onClearBets={handleClearBets} />
+    <Container scrollable backgroundColor={Colors.dark.background}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Game Controls */}
+        <GameControls onRoll={handleRoll} onClearBets={handleClearBets} />
 
-          {/* Craps Table */}
-          <InteractiveCrapsTable />
-        </ScrollView>
-      </View>
+        {/* Craps Table */}
+        <InteractiveCrapsTable />
+      </ScrollView>
     </Container>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.dark.background,
-  },
   scrollView: {
     flex: 1,
   },
   scrollContent: {
-    padding: Theme.spacing.md,
+    padding: Theme.spacing.lg,
+    paddingBottom: Theme.spacing.xxxl,
   },
 });

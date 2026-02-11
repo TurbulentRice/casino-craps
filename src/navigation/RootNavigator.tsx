@@ -34,7 +34,7 @@ function MainTabNavigator() {
           borderTopColor: '#333',
           borderTopWidth: 1,
           paddingTop: 8,
-          height: 80,
+          height: 90,
         },
         tabBarLabelStyle: {
           fontSize: 11,

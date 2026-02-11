@@ -116,7 +116,7 @@ export function PointBox({ number, odds, children }: PointBoxProps) {
       <Caption color={Colors.light.background} style={styles.pointOdds}>
         {odds}
       </Caption>
-      {children}
+      {children || null}
     </View>
   );
 }

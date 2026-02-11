@@ -109,17 +109,17 @@ const styles = StyleSheet.create({
   size_sm: {
     paddingHorizontal: Theme.spacing.md,
     paddingVertical: Theme.spacing.sm,
-    height: Theme.layout.buttonHeight.sm,
+    minHeight: Theme.layout.buttonHeight.sm,
   },
   size_md: {
     paddingHorizontal: Theme.spacing.lg,
     paddingVertical: Theme.spacing.md,
-    height: Theme.layout.buttonHeight.md,
+    minHeight: Theme.layout.buttonHeight.md,
   },
   size_lg: {
     paddingHorizontal: Theme.spacing.xl,
-    paddingVertical: Theme.spacing.lg,
-    height: Theme.layout.buttonHeight.lg,
+    paddingVertical: Theme.spacing.md,
+    minHeight: Theme.layout.buttonHeight.lg,
   },
 
   // Full width
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: Theme.typography.weights.semibold as any,
     textAlign: 'center' as any,
+    flexShrink: 1,
   },
   text_primary: {
     color: Colors.light.background,
