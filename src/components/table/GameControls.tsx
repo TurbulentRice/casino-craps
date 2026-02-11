@@ -3,12 +3,13 @@
  * Roll dice, clear bets, game info display
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Colors } from '../../constants/colors';
 import { Theme } from '../../constants/theme';
 import { Button, Card, Body, Caption, Heading } from '../common';
-import Dice from './Dice';
+import AnimatedNumber from '../common/AnimatedNumber';
+import AnimatedDice from './AnimatedDice';
 import Puck from './Puck';
 import { useGame, useCanRoll, usePhaseInfo } from '../../context/GameContext';
 import { getRollDescription, determineRollOutcome } from '../../utils/dice';
@@ -22,8 +23,18 @@ export default function GameControls({ onRoll, onClearBets }: GameControlsProps)
   const { state } = useGame();
   const canRoll = useCanRoll();
   const { phase, point, puck } = usePhaseInfo();
+  const [isRolling, setIsRolling] = useState(false);
 
   const totalBets = state.player.activeBets.reduce((sum, bet) => sum + bet.amount, 0);
+
+  const handleRoll = () => {
+    setIsRolling(true);
+    onRoll();
+  };
+
+  const handleRollComplete = () => {
+    setIsRolling(false);
+  };
 
   // Get roll description if there's a current roll
   const rollDescription = state.currentRoll
@@ -41,9 +52,13 @@ export default function GameControls({ onRoll, onClearBets }: GameControlsProps)
           {/* Bankroll */}
           <View style={styles.statusItem}>
             <Caption color={Colors.light.textSecondary}>Bankroll</Caption>
-            <Heading level={4} color={Colors.accent}>
-              ${state.player.bankroll.toFixed(0)}
-            </Heading>
+            <AnimatedNumber
+              value={state.player.bankroll}
+              prefix="$"
+              decimals={0}
+              color={Colors.accent}
+              level={4}
+            />
           </View>
 
           {/* Phase & Puck */}
@@ -62,40 +77,57 @@ export default function GameControls({ onRoll, onClearBets }: GameControlsProps)
           {/* Active Bets */}
           <View style={styles.statusItem}>
             <Caption color={Colors.light.textSecondary}>Bets</Caption>
-            <Heading level={4} color={totalBets > 0 ? Colors.primary : Colors.light.textSecondary}>
-              ${totalBets.toFixed(0)}
-            </Heading>
+            <AnimatedNumber
+              value={totalBets}
+              prefix="$"
+              decimals={0}
+              color={totalBets > 0 ? Colors.primary : Colors.light.textSecondary}
+              level={4}
+            />
           </View>
         </View>
       </Card>
 
       {/* Dice Display */}
-      {state.currentRoll && (
-        <Card variant="elevated" padding="lg" style={styles.diceCard}>
-          <Dice roll={state.currentRoll} size="lg" />
-          {rollDescription && (
-            <Body
-              color={Colors.light.text}
-              weight="bold"
-              align="center"
-              style={styles.rollDescription}
-            >
-              {rollDescription}
-            </Body>
-          )}
-        </Card>
-      )}
+      <Card variant="elevated" padding="lg" style={styles.diceCard}>
+        <AnimatedDice
+          roll={state.currentRoll}
+          isRolling={isRolling}
+          onRollComplete={handleRollComplete}
+        />
+        {state.currentRoll && rollDescription && !isRolling && (
+          <Body
+            color={Colors.light.text}
+            weight="bold"
+            align="center"
+            style={styles.rollDescription}
+          >
+            {rollDescription}
+          </Body>
+        )}
+        {isRolling && (
+          <Body
+            color={Colors.accent}
+            weight="bold"
+            align="center"
+            style={styles.rollDescription}
+          >
+            Rolling...
+          </Body>
+        )}
+      </Card>
 
       {/* Control Buttons */}
       <View style={styles.buttonRow}>
         <View style={styles.buttonContainer}>
           <Button
             title="🎲 Roll Dice"
-            onPress={onRoll}
-            disabled={!canRoll}
+            onPress={handleRoll}
+            disabled={!canRoll || isRolling}
             variant="primary"
             size="lg"
             fullWidth
+            loading={isRolling}
           />
         </View>
       </View>

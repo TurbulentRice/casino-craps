@@ -13,25 +13,35 @@ import { Container } from '../components/common';
 
 export default function PracticeScreen() {
   const { state, actions } = useGame();
+  const [isProcessing, setIsProcessing] = React.useState(false);
 
   const handleRoll = () => {
+    setIsProcessing(true);
+
     // Roll the dice
     actions.rollDice();
 
-    // Wait a moment for state to update, then resolve bets
+    // Wait for animation to complete, then resolve bets
     setTimeout(() => {
       if (state.currentRoll) {
         actions.resolveBets(state.currentRoll);
       }
-    }, 100);
+
+      // Allow interaction again
+      setTimeout(() => {
+        setIsProcessing(false);
+      }, 500);
+    }, 1200); // Match dice animation duration
   };
 
   const handleClearBets = () => {
-    actions.clearAllBets();
+    if (!isProcessing) {
+      actions.clearAllBets();
+    }
   };
 
   return (
-    <Container scrollable backgroundColor={Colors.dark.background}>
+    <Container scrollable padding="lg" backgroundColor={Colors.dark.background}>
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
@@ -41,7 +51,7 @@ export default function PracticeScreen() {
         <GameControls onRoll={handleRoll} onClearBets={handleClearBets} />
 
         {/* Craps Table */}
-        <InteractiveCrapsTable />
+        <InteractiveCrapsTable disabled={isProcessing} />
       </ScrollView>
     </Container>
   );

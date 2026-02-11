@@ -22,12 +22,20 @@ import BettingArea from './BettingArea';
 import ChipSelector, { ChipValue } from './ChipSelector';
 import { Body } from '../common';
 
-export default function InteractiveCrapsTable() {
+interface InteractiveCrapsTableProps {
+  disabled?: boolean;
+}
+
+export default function InteractiveCrapsTable({ disabled = false }: InteractiveCrapsTableProps) {
   const { state, actions } = useGame();
   const [selectedChip, setSelectedChip] = useState<ChipValue>(5);
 
   // Handle bet placement
   const handleBetPress = (betType: BetType) => {
+    // Don't allow betting if disabled
+    if (disabled) {
+      return;
+    }
     // Check if bet is allowed in current phase
     if (!isBetAllowed(betType, state.phase, state.point)) {
       Alert.alert(

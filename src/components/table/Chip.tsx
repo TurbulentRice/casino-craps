@@ -51,7 +51,7 @@ export default function Chip({ value, selected = false, onPress, size = 'md' }: 
     >
       <View style={styles.chipInner}>
         <Caption
-          color={isLight ? Colors.dark.text : Colors.light.background}
+          color={isLight ? Colors.light.text : Colors.light.background}
           style={[styles.chipValue, size === 'sm' && styles.chipValueSmall]}
         >
           ${value}

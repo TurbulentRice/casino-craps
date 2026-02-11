@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "temp-expo",
-    "slug": "temp-expo",
+    "name": "casino-craps",
+    "slug": "casino-craps",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
