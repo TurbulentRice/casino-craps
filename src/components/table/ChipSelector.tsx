@@ -7,8 +7,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Colors } from '../../constants/colors';
 import { Theme } from '../../constants/theme';
-import Chip, { ChipValue } from './Chip';
+import Chip from './Chip';
 import { Caption } from '../common';
+
+export type ChipValue = 1 | 5 | 25 | 100 | 500;
 
 interface ChipSelectorProps {
   selectedValue: ChipValue;

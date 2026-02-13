@@ -137,21 +137,22 @@ const styles = StyleSheet.create({
     fontWeight: Theme.typography.weights.semibold as any,
     textAlign: 'center' as any,
     flexShrink: 1,
+    color: '#FFFFFF', // Default white text
   },
   text_primary: {
-    color: Colors.light.background,
+    color: '#FFFFFF', // White text
   },
   text_secondary: {
-    color: Colors.light.background,
+    color: '#FFFFFF', // White text
   },
   text_outline: {
-    color: Colors.primary,
+    color: '#FFFFFF', // White text for visibility on dark backgrounds
   },
   text_ghost: {
-    color: Colors.primary,
+    color: '#FFFFFF', // Changed from Colors.primary
   },
   text_danger: {
-    color: Colors.light.background,
+    color: '#FFFFFF', // White text
   },
 
   // Text sizes

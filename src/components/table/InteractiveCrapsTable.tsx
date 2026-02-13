@@ -19,7 +19,8 @@ import TableLayout, {
   PointBox,
 } from './TableLayout';
 import BettingArea from './BettingArea';
-import ChipSelector, { ChipValue } from './ChipSelector';
+import ChipSelector from './ChipSelector';
+import type { ChipValue } from './ChipSelector';
 import { Body } from '../common';
 
 interface InteractiveCrapsTableProps {

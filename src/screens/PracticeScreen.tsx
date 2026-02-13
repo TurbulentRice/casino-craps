@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { Colors } from '../constants/colors';
 import { Theme } from '../constants/theme';
 import { useGame } from '../context/GameContext';
@@ -41,7 +41,7 @@ export default function PracticeScreen() {
   };
 
   return (
-    <Container scrollable padding="lg" backgroundColor={Colors.dark.background}>
+    <Container scrollable backgroundColor={Colors.dark.background}>
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    padding: Theme.spacing.lg,
-    paddingBottom: Theme.spacing.xxxl,
+    paddingBottom: Theme.spacing.xl,
   },
 });

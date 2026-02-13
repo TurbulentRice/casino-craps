@@ -9,9 +9,6 @@ import { Colors } from '../../constants/colors';
 import { Theme } from '../../constants/theme';
 import { Body, Caption } from '../common';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-const TABLE_PADDING = Theme.spacing.md;
-
 interface TableLayoutProps {
   children?: React.ReactNode;
 }
@@ -138,7 +135,6 @@ export function PropositionArea({ children }: { children?: React.ReactNode }) {
 const styles = StyleSheet.create({
   tableContainer: {
     width: '100%',
-    padding: TABLE_PADDING,
   },
   table: {
     backgroundColor: Colors.table.felt,

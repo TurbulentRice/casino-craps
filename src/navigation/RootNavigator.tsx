@@ -105,7 +105,7 @@ function MainTabNavigator() {
  */
 function TabIcon({ name, color }: { name: string; color: string }) {
   return (
-    <Text style={{ fontSize: 24, opacity: color === '#666' ? 0.6 : 1 }}>
+    <Text style={{ fontSize: 24, color }}>
       {name}
     </Text>
   );
